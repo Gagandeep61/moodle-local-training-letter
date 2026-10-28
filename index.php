@@ -10,9 +10,12 @@ $PAGE->set_context($context);
 $PAGE->set_title(get_string('pluginname', 'local_training_letter'));
 $PAGE->set_heading(get_string('pluginname', 'local_training_letter'));
 
+$cansubmit = has_capability('local/training_letter:submitrequest', $context);
+$canmanage = has_capability('local/training_letter:managerequests', $context);
+
 echo $OUTPUT->header();
-echo $OUTPUT->notification(
-    get_string('skeletonworks', 'local_training_letter'),
-    \core\output\notification::NOTIFY_SUCCESS
-);
+echo html_writer::tag('p', get_string('testcansubmit', 'local_training_letter',
+    $cansubmit ? get_string('yes') : get_string('no')));
+echo html_writer::tag('p', get_string('testcanmanage', 'local_training_letter',
+    $canmanage ? get_string('yes') : get_string('no')));
 echo $OUTPUT->footer();

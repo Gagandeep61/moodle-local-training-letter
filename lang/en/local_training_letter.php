@@ -26,3 +26,10 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Training Request Letter';
 $string['skeletonworks'] = 'The plugin skeleton is working.';
+$string['status_approved'] = 'Approved';
+$string['status_pending'] = 'Pending';
+$string['status_rejected'] = 'Rejected';
+$string['testcanmanage'] = 'Can manage requests: {$a}';
+$string['testcansubmit'] = 'Can submit requests: {$a}';
+$string['training_letter:managerequests'] = 'Review and manage training requests';
+$string['training_letter:submitrequest'] = 'Submit a training request letter';
