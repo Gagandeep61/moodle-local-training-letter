@@ -66,3 +66,18 @@ class helper {
         return get_string('status_' . $status, 'local_training_letter');
     }
 }
+
+    /**
+     * Hides most letters of each name part, e.g. "Gagandeep Singh" becomes "G******* S****".
+     *
+     * @param string $name full name
+     * @return string masked name
+     */
+    public static function mask_name(string $name): string {
+        $masked = [];
+        foreach (preg_split('/\s+/u', trim($name)) as $part) {
+            $masked[] = \core_text::substr($part, 0, 1) . str_repeat('*', max(\core_text::strlen($part) - 1, 0));
+        }
+        return implode(' ', $masked);
+    }
+    

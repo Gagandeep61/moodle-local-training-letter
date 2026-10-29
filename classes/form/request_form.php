@@ -126,7 +126,7 @@ class request_form extends \moodleform {
 
         // Person names: letters, spaces, dot, hyphen, apostrophe.
         foreach (['fullname', 'contactperson'] as $field) {
-            if (!isset($errors[$field]) && !preg_match("/^[\p{L} .'-]+$/u", trim($data[$field]))) {
+            if (!isset($errors[$field]) && !preg_match("/^[A-Za-z .'-]+$/", trim($data[$field]))) {
                 $errors[$field] = get_string('err_name', $pn);
             }
         }

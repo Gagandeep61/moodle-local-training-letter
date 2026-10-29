@@ -43,7 +43,7 @@ if ($ref !== '') {
         $table = new html_table();
         $table->data = [
             [get_string('refno', $pn), s($request->refno)],
-            [get_string('student', $pn), s($request->fullname)],
+            [get_string('student', $pn), s(\local_training_letter\helper::mask_name($request->fullname))],
             [get_string('companyname', $pn), s($request->companyname)],
             [get_string('verifydate', $pn), date('d-m-Y', $request->timereviewed)],
         ];
