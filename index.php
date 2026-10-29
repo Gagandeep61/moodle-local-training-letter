@@ -62,6 +62,14 @@ $mform->set_data((object) [
 
 echo $OUTPUT->header();
 
+if (has_capability('local/training_letter:managerequests', $context)) {
+    echo $OUTPUT->single_button(
+        new moodle_url('/local/training_letter/manage.php'),
+        get_string('managerequests', 'local_training_letter'),
+        'get'
+    );
+}
+
 echo $OUTPUT->heading(get_string('newrequest', 'local_training_letter'), 3);
 $mform->display();
 
@@ -86,8 +94,19 @@ if (!$requests) {
         get_string('duration', 'local_training_letter'),
         get_string('status', 'local_training_letter'),
         get_string('remarks', 'local_training_letter'),
+        get_string('letter', 'local_training_letter'),
     ];
+
     foreach ($requests as $request) {
+        $lettercell = '';
+        if ($request->status === 'approved') {
+            $previewurl = new moodle_url('/local/training_letter/letter.php', ['id' => $request->id]);
+            $downloadurl = new moodle_url('/local/training_letter/letter.php',
+                ['id' => $request->id, 'download' => 1]);
+            $lettercell = html_writer::link($previewurl, get_string('preview', 'local_training_letter'),
+                    ['target' => '_blank']) . ' | ' .
+                html_writer::link($downloadurl, get_string('download', 'local_training_letter'));
+        }
         $table->data[] = [
             userdate($request->timecreated, get_string('strftimedatefullshort', 'langconfig')),
             s($request->companyname),
@@ -95,6 +114,7 @@ if (!$requests) {
             s($durations[$request->duration] ?? $request->duration),
             \local_training_letter\helper::get_status_label($request->status),
             s($request->remarks ?? ''),
+            $lettercell,
         ];
     }
     echo html_writer::table($table);
