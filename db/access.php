@@ -18,7 +18,7 @@
  * Capability definitions for the Training Request Letter plugin.
  *
  * @package    local_training_letter
- * @copyright  2026 Gagandeep Singh
+ * @copyright  2026 training_letter
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

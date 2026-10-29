@@ -68,7 +68,7 @@ class helper {
 }
 
     /**
-     * Hides most letters of each name part, e.g. "Gagandeep Singh" becomes "G******* S****".
+     * Hides most letters of each name part, e.g. "training_letter" becomes "G******* S****".
      *
      * @param string $name full name
      * @return string masked name
