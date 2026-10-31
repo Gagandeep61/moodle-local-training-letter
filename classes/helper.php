@@ -65,7 +65,6 @@ class helper {
     public static function get_status_label(string $status): string {
         return get_string('status_' . $status, 'local_training_letter');
     }
-}
 
     /**
      * Hides most letters of each name part, e.g. "training_letter" becomes "G******* S****".
@@ -80,4 +79,4 @@ class helper {
         }
         return implode(' ', $masked);
     }
-    
+}
